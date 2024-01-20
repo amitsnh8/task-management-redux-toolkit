@@ -12,6 +12,10 @@ export const todoSlice = createSlice({
       // Also, no return statement is required from these functions.
       state.push(action.payload);
     },
+    editToDo: (state,action) => {
+      state[action.payload.index]=action.payload.task;
+      return state;
+    },
     removeToDo: (state,action) => {
       return state.filter((todo,id)=>id!==action.payload)
     },
@@ -19,6 +23,6 @@ export const todoSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { addToDo, removeToDo } = todoSlice.actions;
+export const { addToDo, removeToDo,editToDo } = todoSlice.actions;
 export const getToDoList = (state) => state.toDo;
 export default todoSlice.reducer
